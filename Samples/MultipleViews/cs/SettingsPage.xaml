@@ -1,0 +1,65 @@
+﻿<Page
+    x:Class="SDKTemplate.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	DataContext="{Binding RelativeSource={RelativeSource Self}}"
+    mc:Ignorable="d"
+	>
+	
+	<Grid x:Name="RootGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<Grid Grid.Row="0" MinHeight="{StaticResource AppBarThemeCompactHeight}"  x:Name="HeaderBlur"/>
+		<Pivot x:Name="SettingsControl" Margin="0" Grid.Row="0" Grid.RowSpan="2">
+			<Pivot.Items>
+				<PivotItem x:Uid="SettingsPagePivotGeneral" Header="General" EntranceNavigationTransitionInfo.IsTargetElement="True">
+					<ScrollViewer>
+						<StackPanel Margin="12,8,12,0">
+							<TextBlock x:Uid="SettingsPageDecryptedHeader" HorizontalAlignment="Left" TextWrapping="Wrap" Text="When a decrypted file is selected" Style="{StaticResource BodyTextBlockStyle}" TextLineBounds="Full" OpticalMarginAlignment="None" VerticalAlignment="Top" Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"/>
+							<ComboBox  x:Name="ComboBoxDecrypted" VerticalAlignment="Top" SelectedIndex="0" Margin="0,4,0,0">
+								<ComboBoxItem x:Uid="SettingsPageDecryptedLaunch" Content="Launch with the associated app" />
+								<ComboBoxItem x:Uid="SettingsPageDecryptedEncrypt"  Content="Encrypt the file" />
+							</ComboBox>
+							<TextBlock x:Uid="SettingsPageEncryptedHeader"  HorizontalAlignment="Left" TextWrapping="Wrap" Text="When an encrypted file is selected" VerticalAlignment="Top" Style="{StaticResource BodyTextBlockStyle}" TextLineBounds="Full" Margin="0,12,0,0" OpticalMarginAlignment="None" Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"/>
+							<ComboBox x:Name="ComboBoxEncrypted" VerticalAlignment="Top" SelectedIndex="0" Margin="0,4,0,0" BorderThickness="2">
+								<ComboBoxItem x:Uid="SettingsPageEncryptedDecrypt" Content="Decrypt the file" />
+								<ComboBoxItem x:Uid="SettingsPageEncryptedLaunch" Content="Decrypt and launch the file" />
+							</ComboBox>
+							<ToggleSwitch x:Name="ToggleDeleteItemsAsk" x:Uid="SettingsPageDeleteItemsAsk" Header="Show delete confirmation dialog" Margin="0,12,0,0"/>
+							<ToggleSwitch x:Name="ToggleBackgroundProcessing" x:Uid="SettingsPageBackgroundProcessing" Header="Background processing" Margin="0,8,0,0"/>
+							<TextBlock x:Name="BackgroundProcessingWarning" x:Uid="SettingsPageBackgroundProcessingWarning" Text="Background processing is blocked by Windows. Please check the background apps settings" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="Red" x:Load="False" Visibility="Collapsed"/>
+							<TextBlock x:Uid="SettingsPageDeleteTempHeader"  HorizontalAlignment="Left" TextWrapping="Wrap" Text="Temporary copies of decrypted files might be stored. Click here to remove them" VerticalAlignment="Top" Style="{StaticResource BodyTextBlockStyle}" TextLineBounds="Full" Margin="0,8,0,0" OpticalMarginAlignment="None" Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"/>
+							<Button x:Name="TempButton" x:Uid="SettingsPageDeleteTempButton" Content="Delete temporary files" VerticalAlignment="Top" Margin="0,8,0,0" IsEnabled="False" />
+							<TextBlock x:Name="TempNote" x:Uid="SettingsPageDeleteTempNote"  Visibility="Collapsed" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Note: Temporary files cannot be deleted now because some files still have to be re-encrypted" VerticalAlignment="Top" Style="{StaticResource BodyTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" TextLineBounds="Full" Margin="0,8,0,0" OpticalMarginAlignment="None"/>
+						</StackPanel>
+					</ScrollViewer>
+				</PivotItem>
+				<PivotItem x:Uid="SettingsPagePivotOneDrive" Header="OneDrive">
+					<StackPanel Margin="12,8,12,0">
+						<ToggleSwitch x:Name="ToggleOneDriveEnabled" x:Uid="SettingsPageOneDriveEnabled" Header="Enable OneDrive synchronization (Experimental)" />
+						<StackPanel x:Name="OneDriveAccountPanel" Orientation="Horizontal" x:Load="False" Visibility="Collapsed">
+							<TextBlock Text="Account:" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="Gray"/>
+							<TextBlock Margin="4,0,0,0" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="Gray"/>
+							<HyperlinkButton Content="Logout" Margin="4,0,0,0" VerticalAlignment="Top" Padding="0" FontSize="12"/>
+						</StackPanel>
+						<ToggleSwitch x:Name="ToggleOneDriveMetered" x:Uid="SettingsPageOneDriveMetered" Header="Limit data usage for metered connections" Margin="0,8,0,0" />
+					</StackPanel>
+				</PivotItem>
+				<PivotItem x:Uid="SettingsPagePivotInfo" Header="Info">
+					<StackPanel Margin="12,8,12,0">
+						<TextBlock Style="{StaticResource BodyTextBlockStyle}" FontSize="20" TextWrapping="NoWrap" Foreground="Gray"/>
+						<TextBlock x:Uid="InfoPageText" Text="Info Text" Style="{StaticResource BodyTextBlockStyle}" Margin="0,8,0,8" TextWrapping="Wrap" Foreground="Gray"/>
+						<TextBlock x:Uid="InfoPagePrivacyHeader" Text="Privacy policy"  TextWrapping="NoWrap" FontSize="20"  Foreground="Gray"/>
+						<TextBlock x:Uid="InfoPagePrivacyText" Text="Privacy policy text" Style="{StaticResource BodyTextBlockStyle}" Margin="0,8,0,8" TextWrapping="Wrap" Foreground="Gray"/>
+					</StackPanel>
+				</PivotItem>
+			</Pivot.Items>
+		</Pivot>
+
+	
+	</Grid>
+</Page>

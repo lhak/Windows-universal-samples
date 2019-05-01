@@ -81,7 +81,7 @@ namespace SDKTemplate
                 viewControl.StartViewInUse();
 
                 var frame = new Frame();
-                frame.Navigate(typeof(SecondaryViewPage), viewControl);
+                frame.Navigate(typeof(SettingsPage), viewControl);
                 Window.Current.Content = frame;
                 // This is a change from 8.1: In order for the view to be displayed later it needs to be activated.
                 Window.Current.Activate();

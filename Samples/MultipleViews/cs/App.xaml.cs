@@ -34,15 +34,21 @@ namespace SDKTemplate
         {
             this.InitializeComponent();
             this.Construct();
+			this.LeavingBackground += App_LeavingBackground;
         }
 
-        /// <summary>
-        /// Invoked when the application is launched normally by the end user.  Other entry points
-        /// will be used when the application is launched to open a specific file, to display
-        /// search results, and so forth.
-        /// </summary>
-        /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+		private void App_LeavingBackground(object sender, LeavingBackgroundEventArgs e)
+		{
+			// Causes freeze
+		}
+
+		/// <summary>
+		/// Invoked when the application is launched normally by the end user.  Other entry points
+		/// will be used when the application is launched to open a specific file, to display
+		/// search results, and so forth.
+		/// </summary>
+		/// <param name="e">Details about the launch request and process.</param>
+		protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
